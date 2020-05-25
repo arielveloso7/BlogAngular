@@ -1,0 +1,34 @@
+<header>
+    <nav class="navbar justify-content-between">
+        <a class="navbar-brand">BLOG</a>
+    </nav>
+
+
+    <main role="main" class="inner cover">
+
+        <h1 class="cover-heading">WELCOME</h1>
+
+        <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()" class="form-signin">
+
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
+                formControlName="email">
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+                formControlName="password">
+
+            <input [disabled]="!formulario.valid" type="submit" class="btn btn-lg btn-secondary btn-block"
+                value="Sign in">
+        </form>
+    </main>
+
+
+    <footer class="text-muted">
+        <div class="container">
+            <p>Blog &copy; where you can find the best posts you have never seen</p>
+
+        </div>
+    </footer>

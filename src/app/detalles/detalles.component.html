@@ -1,0 +1,33 @@
+<header>
+
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <a [routerLink]="['/posts']" class="navbar-brand">POSTS</a>
+        <a href="#" class="form-inline">
+            <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()">Logout</button>
+        </a>
+    </nav>
+
+</header>
+
+<main role="main">
+    <div class="card text-center">
+        <div class="card-header">
+            {{post.author.name}}
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">{{post.name}}</h3>
+            <p class="card-text">{{post.body}}</p>
+            <img [src]="post.thumb">
+        </div>
+        <div class="card-footer text-muted">
+            {{post.published_at}}
+        </div>
+    </div>
+</main>
+
+<footer class="text-muted bg-dark">
+    <div class="container">
+        <p>Blog &copy; where you can find the best posts you have never seen</p>
+
+    </div>
+</footer>

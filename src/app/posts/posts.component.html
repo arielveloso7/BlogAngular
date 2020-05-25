@@ -1,0 +1,73 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <a class="navbar-brand">BLOG</a>
+        <a href="#" class="form-inline">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+        </a>
+    </nav>
+
+
+</header>
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Post's House</h1>
+            <p class="lead text-muted">Choose the post you like the most and see all their information.
+            </p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div *ngFor="let post of arrPosts; index as i" class="col-md-4">
+                    <div class="card text-white bg-dark mb-4 shadow-sm">
+                        <img class="imagen" [src]="post.thumb">
+                        <div class="card-body">
+                            <p class="card-text">{{post.name}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                                        [attr.data-target]="'#modal' + i" [attr.data-id]="post.id">Show author</button>
+
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        [routerLink]="['/posts', post.id]">Show details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-muted bg-dark">
+    <div class="container">
+        <p>Blog &copy; where you can find the best posts you have never seen</p>
+
+    </div>
+</footer>
+
+<div *ngFor="let post of arrPosts; index as i" class="modal fade" id="modal{{i}}" class="modal fade bd-example-modal-sm"
+    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{post.author.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img [src]="post.author.avatar">
+                <p>{{post.name}}</p>
+            </div>
+        </div>
+    </div>
